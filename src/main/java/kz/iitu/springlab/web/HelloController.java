@@ -15,15 +15,19 @@ public class HelloController {
     @Value("${app.owner:unknown}")
     private String owner;
 
+    // Возвращает приветствие с именем
     @GetMapping("/hello")
     public Greeting hello(@RequestParam(defaultValue = "world") String name) {
         return new Greeting("Hello, " + name + "!", owner, LocalDateTime.now());
     }
 
+    // Возвращает информацию о сервере: владелец, версия Java, число ядер
     @GetMapping("/info")
     public Info info() {
         return new Info(owner, System.getProperty("java.version"), Runtime.getRuntime().availableProcessors());
     }
+
+    // Индивидуальное задание, вариант 11: возвращает текущее время в заданном часовом поясе
     @GetMapping("/time")
     public ResponseEntity<?> time(@RequestParam(required = false) String zone) {
         String zoneName = (zone == null || zone.isBlank()) ? "Asia/Almaty" : zone;
