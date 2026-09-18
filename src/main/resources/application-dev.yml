@@ -5,6 +5,10 @@ app:
   mail:
     enabled: false
     retry-count: 1
+  report:
+    timezone: UTC
+    retention: 1d
+    include-charts: false
 
 logging:
   level:

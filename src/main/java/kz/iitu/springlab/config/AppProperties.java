@@ -13,12 +13,19 @@ import java.time.Duration;
 public record AppProperties(
         @NotBlank String owner,
         @NotBlank String group,
-        @Valid Mail mail) {
+        @Valid Mail mail,
+        @Valid Report report) {
 
     public record Mail(
             @NotBlank @Email String from,
             @Min(1) @Max(10) @DefaultValue("3") int retryCount,
             @DefaultValue("5s") Duration timeout,
             @DefaultValue("true") boolean enabled) {
+    }
+
+    public record Report(
+            @NotBlank String timezone,
+            @NotNull Duration retention,
+            @DefaultValue("false") boolean includeCharts) {
     }
 }

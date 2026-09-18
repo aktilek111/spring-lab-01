@@ -13,6 +13,10 @@ app:
     retry-count: 3
     timeout: 5s
     enabled: true
+  report:
+    timezone: Asia/Almaty
+    retention: 30d
+    include-charts: true
 
 logging:
   level:
