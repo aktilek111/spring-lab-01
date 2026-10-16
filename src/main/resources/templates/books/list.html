@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Catalogue</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<h1 th:text="${title}">Catalogue</h1>
+
+<p th:if="${message}" class="flash" th:text="${message}"></p>
+
+<form method="get" action="/books" class="filter">
+    <input type="text" name="author" placeholder="Filter by author" th:value="${author}">
+    <button type="submit">Filter</button>
+</form>
+
+<table>
+    <tr><th>#</th><th>Title</th><th>Author</th><th>Year</th></tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}">1</td>
+        <td th:text="${book.title}">Title</td>
+        <td th:text="${book.author}">Author</td>
+        <td th:text="${book.year}">2020</td>
+    </tr>
+</table>
+
+<h2>Add a book</h2>
+<form method="post" action="/books" class="add">
+    <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="author" placeholder="Author" required>
+    <input type="number" name="year" placeholder="Year" required>
+    <button type="submit">Add</button>
+</form>
+</body>
+</html>

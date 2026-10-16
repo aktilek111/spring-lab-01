@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: spring-lab-01
+
+server:
+  port: 8080
+
+app:
+  owner: Aktilek Kulkair
+  group: IS-2415
+  date-pattern: "yyyy-MM-dd HH:mm:ss"
+  mail:
+    from: 41068@iitu.edu.kz
+    retry-count: 3
+    timeout: 5s
+    enabled: true
+  report:            # individual assignment, variant 11
+    timezone: Asia/Almaty
+    retention: 30d
+    include-charts: true
+
+logging:
+  level:
+    web: INFO
+    kz.iitu: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,env,configprops,conditions
